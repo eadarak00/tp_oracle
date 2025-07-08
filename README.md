@@ -1,5 +1,41 @@
 # Système de Gestion Universitaire – UASZ
 
+## Sommaire
+
+- [Description](#description)
+- [Schéma de base de données](#schéma-de-base-de-données)
+- [Fonctionnalités](#fonctionnalités)
+  - [Fonctions académiques](#fonctions-académiques)
+  - [Reporting & Procédures](#reporting--procédures)
+- [Configuration initiale](#configuration-initiale)
+- [Technologies utilisées](#technologies-utilisées)
+- [Résultats](#résultats)
+  - [Lister les tables](#lister-les-tables)
+  - [Description de la table Étudiant](#description-de-la-table-étudiant)
+  - [Description de la table Semestre](#description-de-la-table-semestre)
+  - [Description de la table UE](#description-de-la-table-ue)
+  - [Description de la table EC](#description-de-la-table-ec)
+  - [Description de la table Note](#description-de-la-table-note)
+  - [Description de la table Résultat](#description-de-la-table-résultat)
+  - [Lister les triggers](#lister-les-triggers)
+  - [Lister les procédures](#lister-les-procédures)
+  - [Lister les fonctions](#lister-les-fonctions)
+  - [Exécution du programme principal](#exécution-du-programme-principal)
+  - [Liste des étudiants par ordre de mérite](#liste-des-étudiants-par-ordre-de-mérite)
+  - [Relevé de notes d’un étudiant](#relevé-de-notes-dun-étudiant)
+  - [Liste des EC validés](#liste-des-ec-validés)
+  - [Liste des étudiants ayant validé un semestre](#liste-des-étudiants-ayant-validé-un-semestre)
+  - [Major de promotion](#major-de-promotion)
+- [Fonctions de calculs académiques](#fonctions-de-calculs-académiques)
+  - [Moyenne d’un étudiant pour une UE donnée](#moyenne-dun-étudiant-pour-une-ue-donnée)
+  - [Moyenne semestrielle d’un étudiant](#moyenne-semestrielle-dun-étudiant)
+  - [Moyenne de classe pour un semestre](#moyenne-de-classe-pour-un-semestre)
+  - [Moyenne de classe pour un EC](#moyenne-de-classe-pour-un-ec)
+  - [Moyenne de classe pour une UE](#moyenne-de-classe-pour-une-ue)
+- [Encadrant](#encadrant)
+- [Auteurs](#auteurs)
+
+
 ## Description
 
 Ce projet est un système complet de gestion académique développé en **Oracle SQL et PL/SQL** pour l’Université Assane Seck de Ziguinchor. Il permet d’automatiser plusieurs aspects liés à la gestion des étudiants, des notes, des unités d’enseignement, et des résultats académiques. Ce système est conçu dans le cadre du cours de **Base de Données Avancée (Master 1 Informatique, 2023-2024)**.
@@ -101,6 +137,7 @@ Structure de la table `Resultat`, qui contient les moyennes semestrielles, résu
 
 ### Lister les triggers
 Liste des triggers créés dans la base pour automatiser les tâches (matricule, email, calculs...).
+
 ![Lister les triggers](./captures/Lister%20Triggers.png)
 
 ### Lister les procédures
