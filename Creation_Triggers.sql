@@ -6,11 +6,22 @@ DROP TRIGGER Code_EC;
 DROP TRIGGER Code_UE;
 DROP TRIGGER Calculer_Moyenne;
 DROP TRIGGER Verifier_Validite;
-
-/* TRIGGER
--- attribue de manière automatique un numéro de matricule à chaque étudiant ;
--- vérifie la validité du sexe qui ne peut prendre que Masculin ou Féminin ;
--- attribue de manière automatique une adresse e-mail à chaque nouvel étudiant ;
+/**
+* TRIGGER: MAT_ETUDIANT
+*
+* Objectif:
+* Génère automatiquement matricule et email avant insertion
+* Format matricule: AAAA000X (L1=2023, L2=2022, L3=2021)
+* Format email: initialePrénom.initialeNom@zig.univ.sn
+* Gère les doublons email (ajoute numéro si existe)
+*
+* Validation:
+* Niveau doit être L1/L2/L3
+* Sexe doit être 'Feminin' ou 'Masculin'
+* Limite à 7 étudiants par niveau
+*
+* Tables: ETUDIANT
+*
 */
 Create Trigger Mat_Etudiant Before Insert On Etudiant For Each Row
 	Declare
@@ -98,9 +109,24 @@ Begin
 End ;
 /
 
-/*
-	TRIGGER
---- Attribue automatiquement les codes des UE.
+/**
+*
+*TRIGGER: Code_UE
+*
+* Objectif:
+* Génère automatiquement un code UE avant insertion
+* 
+* Format:
+* Licence: INF[année][semestre][n] (ex: INF111 pour Licence S1 n°1)
+* Master: INF[année][semestre][n] (ex: INF411 pour Master S1 n°1)
+* 
+* Logique:
+* Compte les UE existantes pour le même semestre/cycle
+* Incrémente le numéro séquentiel (n)
+* Format dépend du cycle (Licence/Master) et semestre (1-6 ou 1-4)
+*
+* Tables: UE
+*
 */
 CREATE TRIGGER Code_UE BEFORE INSERT ON UE FOR EACH ROW
 BEGIN
