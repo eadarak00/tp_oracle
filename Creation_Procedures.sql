@@ -146,7 +146,7 @@ BEGIN
     -- Afficher l'en-tête des résultats
     DBMS_OUTPUT.PUT_LINE('Resultats de la classe :');
     DBMS_OUTPUT.PUT_LINE('----------------------------------------');
-    DBMS_OUTPUT.PUT_LINE('Année             : ' || an);
+    DBMS_OUTPUT.PUT_LINE('Annee             : ' || an);
     DBMS_OUTPUT.PUT_LINE('Niveau            : ' || cy || ' ' || sem);
     DBMS_OUTPUT.PUT_LINE('Semestre          : Semestre ' || sem);
 
@@ -180,13 +180,13 @@ BEGIN
 
     -- Afficher l'en-tête
     DBMS_OUTPUT.PUT_LINE('=======================================================================');
-    DBMS_OUTPUT.PUT_LINE('                  LISTE DES ÉTUDIANTS PAR ORDRE DE MÉRITE              ');
+    DBMS_OUTPUT.PUT_LINE('                  LISTE DES ETUDIANTS PAR ORDRE DE MERITE              ');
     DBMS_OUTPUT.PUT_LINE('=======================================================================');
-    DBMS_OUTPUT.PUT_LINE('Année    : ' || an);
+    DBMS_OUTPUT.PUT_LINE('Annee    : ' || an);
     DBMS_OUTPUT.PUT_LINE('Niveau   : ' || cy || ' ' || sem);
     DBMS_OUTPUT.PUT_LINE('Semestre : Semestre ' || sem);
     DBMS_OUTPUT.PUT_LINE('-----------------------------------------------------------------------');
-    DBMS_OUTPUT.PUT_LINE(RPAD('MATRICULE', 12) || RPAD('NOM', 15) || RPAD('PRÉNOM', 15) || 
+    DBMS_OUTPUT.PUT_LINE(RPAD('MATRICULE', 12) || RPAD('NOM', 15) || RPAD('PRENOM', 15) || 
                          RPAD('MOYENNE', 10) || RPAD('MENTION', 12) || 'RANG');
     DBMS_OUTPUT.PUT_LINE('-----------------------------------------------------------------------');
 
@@ -252,18 +252,18 @@ BEGIN
 
     -- Afficher l'en-tête du relevé
     DBMS_OUTPUT.PUT_LINE('================================================================================');
-    DBMS_OUTPUT.PUT_LINE('                            RELEVÉ DE NOTES                                     ');
+    DBMS_OUTPUT.PUT_LINE('                            RELEVE DE NOTES                                     ');
     DBMS_OUTPUT.PUT_LINE('================================================================================');
-    DBMS_OUTPUT.PUT_LINE('Année    : ' || an);
+    DBMS_OUTPUT.PUT_LINE('Annee    : ' || an);
     DBMS_OUTPUT.PUT_LINE('Niveau   : ' || cy || ' ' || sem);
     DBMS_OUTPUT.PUT_LINE('Semestre : Semestre ' || sem);
     DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------------');
-    DBMS_OUTPUT.PUT_LINE('Numéro de carte  : ' || num_carte);
+    DBMS_OUTPUT.PUT_LINE('Numero de carte  : ' || num_carte);
     DBMS_OUTPUT.PUT_LINE('Nom et Prénom    : ' || nom_etudiant || ' ' || prenom_etudiant);
     DBMS_OUTPUT.PUT_LINE('Âge              : ' || age_etudiant || ' ans');
     DBMS_OUTPUT.PUT_LINE('Sexe              : ' || sexe_etudiant);
     DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------------');
-    DBMS_OUTPUT.PUT_LINE(RPAD('Code EC', 10) || RPAD('Libellé', 25) || RPAD('CC', 10) || RPAD('Examen', 10) || RPAD('Moyenne', 10));
+    DBMS_OUTPUT.PUT_LINE(RPAD('Code EC', 10) || RPAD('Libelle', 25) || RPAD('CC', 10) || RPAD('Examen', 10) || RPAD('Moyenne', 10));
     DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------------');
 
     -- Affichage des résultats par matière
@@ -307,7 +307,7 @@ BEGIN
 
     -- Afficher les résultats globaux
     DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------------');
-    DBMS_OUTPUT.PUT_LINE('Moyenne générale  : ' || moyenne_etudiant);
+    DBMS_OUTPUT.PUT_LINE('Moyenne generale  : ' || moyenne_etudiant);
     DBMS_OUTPUT.PUT_LINE('Crédits obtenus    : ' || credits);
     DBMS_OUTPUT.PUT_LINE('Décision du jury   : ' || decision);
     DBMS_OUTPUT.PUT_LINE('Mention             : ' || mention_etudiant);
@@ -316,9 +316,9 @@ BEGIN
 
 EXCEPTION
     WHEN student_not_found THEN
-        DBMS_OUTPUT.PUT_LINE('Erreur : Aucun étudiant trouvé avec le numéro de carte ' || num_carte);
+        DBMS_OUTPUT.PUT_LINE('Erreur : Aucun etudiant trouve avec le numero de carte ' || num_carte);
     WHEN result_not_found THEN
-        DBMS_OUTPUT.PUT_LINE('Erreur : Aucun résultat trouvé pour cet étudiant au semestre ' || sem || ' de l''année ' || an);
+        DBMS_OUTPUT.PUT_LINE('Erreur : Aucun resultat trouve pour cet etudiant au semestre ' || sem || ' de l''année ' || an);
 END;
 /
 
@@ -353,7 +353,7 @@ BEGIN
         WHERE Matricule = num_carte;
     EXCEPTION
         WHEN NO_DATA_FOUND THEN
-            DBMS_OUTPUT.PUT_LINE('Erreur : Aucun étudiant trouvé avec ce numéro de carte.');
+            DBMS_OUTPUT.PUT_LINE('Erreur : Aucun etudiant trouve avec ce numero de carte.');
             RAISE student_not_found;
     END;
 
@@ -364,8 +364,8 @@ BEGIN
     
     -- Afficher les en-têtes des colonnes
     DBMS_OUTPUT.PUT_LINE(
-        RPAD('Code_EC', 10) || RPAD('Libellé_EC', 30) || RPAD('Coef', 5) ||
-        RPAD('Crédits', 8) || RPAD('CC', 6) || RPAD('Exam', 6) || RPAD('Moyenne', 8)
+        RPAD('Code_EC', 10) || RPAD('Libelle_EC', 30) || RPAD('Coef', 5) ||
+        RPAD('Credits', 8) || RPAD('CC', 6) || RPAD('Exam', 6) || RPAD('Moyenne', 8)
     );
     DBMS_OUTPUT.PUT_LINE('-------------------------------------------------------------------------------');
 
@@ -388,16 +388,16 @@ BEGIN
         -- Indiquer qu'au moins une ligne a été trouvée
         aucun_ec_valide := FALSE;
 
-        -- Affichage formaté des données
+        -- Affichage formaté des donnees
         DBMS_OUTPUT.PUT_LINE(
             RPAD(rec.Code_EC, 10) || RPAD(rec.Libelle_EC, 30) || RPAD(rec.Coefficient_EC, 5) ||
             RPAD(rec.Credit_EC, 8) || RPAD(rec.CC, 6) || RPAD(rec.Exam, 6) || RPAD(rec.Moyenne_EC, 8)
         );
     END LOOP;
 
-    -- Si aucun EC n'a été validé
+    -- Si aucun EC n'a eté validé
     IF aucun_ec_valide THEN
-        DBMS_OUTPUT.PUT_LINE('Aucun EC validé pour cet étudiant.');
+        DBMS_OUTPUT.PUT_LINE('Aucun EC valide pour cet etudiant.');
     END IF;
 
     DBMS_OUTPUT.PUT_LINE('-------------------------------------------------------------------------------');
@@ -405,7 +405,7 @@ BEGIN
 EXCEPTION
     WHEN student_not_found THEN
         -- Gestion de l'exception si l'étudiant n'existe pas
-        DBMS_OUTPUT.PUT_LINE('Procédure interrompue : Étudiant introuvable.');
+        DBMS_OUTPUT.PUT_LINE('Procedure interrompue : Étudiant introuvable.');
     WHEN OTHERS THEN
         -- Gestion de toute autre erreur
         DBMS_OUTPUT.PUT_LINE('Erreur inattendue : ' || SQLERRM);
@@ -414,7 +414,7 @@ END;
 
 
 /*
--- Liste des etudiants validés
+-- Liste des etudiants valides
 */
 CREATE OR REPLACE PROCEDURE Lister_Etudiant_Valides(
     niv IN CHAR, 
@@ -428,7 +428,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('================================================================================');
     
     DBMS_OUTPUT.PUT_LINE(
-        RPAD('Matricule', 12) || RPAD('Prénom', 15) || RPAD('Nom', 15) || 
+        RPAD('Matricule', 12) || RPAD('Prenom', 15) || RPAD('Nom', 15) || 
         RPAD('Âge', 5) || RPAD('Sexe', 8) || RPAD('Moyenne', 10) || RPAD('Mention', 15)
     );
     DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------------');
@@ -502,6 +502,6 @@ BEGIN
 
 EXCEPTION
     WHEN student_not_found THEN
-        DBMS_OUTPUT.PUT_LINE('Aucun étudiant major n''a été trouvé pour ce semestre.');
+        DBMS_OUTPUT.PUT_LINE('Aucun etudiant major n''a ete trouve pour ce semestre.');
 END;
 /
